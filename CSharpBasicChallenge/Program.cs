@@ -82,7 +82,7 @@ class Program
                     break;
                 case 5:
                     {
-                        Console.Write("Type a number: ");
+                        Console.Write("Type a car plate: ");
                         var inputValue = Console.ReadLine();
 
                         var carPlate = new CarPlate(plate: inputValue);
@@ -100,7 +100,7 @@ class Program
                     break;
                 case 6:
                     {
-                        Console.WriteLine("TODO...");
+                        CurrentDate.FormatCurrentDateByInput();
                     }
                     break;
                 case 0:

@@ -12,9 +12,9 @@ public class CarPlate
 
     public bool isLengthValid()
     {
-        if (Plate.Length == 9)
+        if (Plate.Contains('-'))
         {
-            if (Plate.Contains('-'))
+            if (Plate.Length == 8)
             {
                 IsWithDash = true;
                 return true;
@@ -27,7 +27,40 @@ public class CarPlate
 
     public bool isValidDigits()
     {
-        // TODO
-        return true;
+        var lettersPart = Plate.Substring(0, 3);
+        var startOfNumbersPart = IsWithDash ? 4 : 3;
+        var numbersPart = Plate.Substring(startOfNumbersPart);
+
+        if (numbersPart.Length != 4)
+        {
+            return false;
+        }
+
+        try
+        {
+            int.Parse(numbersPart);
+        }
+        catch
+        {
+            return false;
+        }
+
+        bool isValid = true;
+
+        foreach(var letter in lettersPart)
+        {
+
+            try
+            {
+                int.Parse(letter.ToString());
+                isValid = false;
+            }
+            catch
+            {
+                continue;
+            }
+        }
+
+        return isValid;
     }
 }
